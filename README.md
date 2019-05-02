@@ -49,6 +49,16 @@ var mg = mailgun.client({
 });
 ```
 
+For use with an EU domain, set `url` to `https://api.eu.mailgun.net`:
+
+```js
+var mg = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY || '',
+  url: 'https://api.eu.mailgun.net',
+});
+```
+
 ## Methods
 
 The following service methods are available to instantiated clients. The examples assume you have already created a mailgun client as `mg` with valid credentials.
