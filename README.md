@@ -149,6 +149,7 @@ Options:
 Parameter         | Description
 :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 to                | Email address of the recipient(s). Example: "Bob <bob@host.com>". You can use commas to separate multiple recipients. Make sure to include all To, Cc and Bcc recipients of the message.
+subject           | Subject of the message.
 html              | HTML version of the message.
 text              | Text version of the message.
 message           | MIME string of the message. Make sure to use multipart/form-data to send this as a file upload.
