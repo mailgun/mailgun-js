@@ -30,7 +30,7 @@ describe('DomainClient', function() {
         require_tls: true
       }];
 
-      api.get('/v2/domains').reply(200, {
+      api.get('/v3/domains').reply(200, {
         'items': domains
       });
 
@@ -68,7 +68,7 @@ describe('DomainClient', function() {
         require_tls: true
       };
 
-      api.get('/v2/domains/testing.example.com').reply(200, {
+      api.get('/v3/domains/testing.example.com').reply(200, {
         domain: domainData,
         receiving_dns_records: [],
         sending_dns_records: []
@@ -108,7 +108,7 @@ describe('DomainClient', function() {
         require_tls: true
       };
 
-      api.post('/v2/domains').reply(200, {
+      api.post('/v3/domains').reply(200, {
         domain: domainData,
         receiving_dns_records: [],
         sending_dns_records: []
@@ -135,7 +135,7 @@ describe('DomainClient', function() {
 
   describe('destroy', function() {
     it('deletes a domain', function() {
-      api.delete('/v2/domains/test.example.com').reply(200, {
+      api.delete('/v3/domains/test.example.com').reply(200, {
         message: 'domain deleted'
       });
 
@@ -149,7 +149,7 @@ describe('DomainClient', function() {
 
   describe('getTracking', function() {
     it('fetches all tracking settings', function() {
-      api.get('/v2/domains/domain.com/tracking').reply(200, {
+      api.get('/v3/domains/domain.com/tracking').reply(200, {
         'tracking': {
           'open': { 'active': true },
           'click': { 'active': true },
@@ -165,7 +165,7 @@ describe('DomainClient', function() {
 
   describe('updateTracking', function() {
     it('updates tracking settings', function() {
-      api.put('/v2/domains/domain.com/tracking/open', 'active=true').reply(200, {
+      api.put('/v3/domains/domain.com/tracking/open', 'active=true').reply(200, {
         'message': 'Tracking settings have been updated',
         'open': {
           'active': true

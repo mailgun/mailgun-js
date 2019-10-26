@@ -22,7 +22,7 @@ describe('WebhookClient', function() {
     };
 
     it('fetches all webhooks', function() {
-      api.get('/v2/domains/domain.com/webhooks').reply(200, {
+      api.get('/v3/domains/domain.com/webhooks').reply(200, {
         'webhooks': hooks
       });
 
@@ -34,7 +34,7 @@ describe('WebhookClient', function() {
 
   describe('get', function() {
     it('fetches single webhook', function() {
-      api.get('/v2/domains/domain.com/webhooks/click').reply(200, {
+      api.get('/v3/domains/domain.com/webhooks/click').reply(200, {
         'webhook': {
           'url': 'trackclick.com'
         }
@@ -48,7 +48,7 @@ describe('WebhookClient', function() {
 
   describe('create', function() {
     it('creates webhook', function() {
-      api.post('/v2/domains/domain.com/webhooks', 'id=click&url=trackclick.com').reply(200, {
+      api.post('/v3/domains/domain.com/webhooks', 'id=click&url=trackclick.com').reply(200, {
         'message': 'Webhook has been created',
         'webhook': {
           'url': 'trackclick.com'
@@ -61,7 +61,7 @@ describe('WebhookClient', function() {
     });
 
     it('tests webhook', function() {
-      api.put('/v2/domains/domain.com/webhooks/click/test', 'url=trackclick.com').reply(200, {
+      api.put('/v3/domains/domain.com/webhooks/click/test', 'url=trackclick.com').reply(200, {
         'code': '500',
         'message': 'Hi!'
       });
@@ -74,7 +74,7 @@ describe('WebhookClient', function() {
 
   describe('update', function() {
     it('updates webhook', function() {
-      api.put('/v2/domains/domain.com/webhooks/click', 'url=trackclick.com').reply(200, {
+      api.put('/v3/domains/domain.com/webhooks/click', 'url=trackclick.com').reply(200, {
         'message': 'Webhook has been updated',
         'webhook': {
           'url': 'trackclick.com'
@@ -89,7 +89,7 @@ describe('WebhookClient', function() {
 
   describe('destroy', function() {
     it('deletes webhook', function() {
-      api.delete('/v2/domains/domain.com/webhooks/click').reply(200, {
+      api.delete('/v3/domains/domain.com/webhooks/click').reply(200, {
         'message': 'Webhook has been deleted',
         'webhook': {
           'url': 'trackclick.com'
