@@ -9,12 +9,12 @@ var mg = mailgun.client({
 
 mg.validate.get('Alice <alice@example.com>')
   .then(data => console.log('validate: ', data))
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
 
 mg.parse.get(['Alice <alice@example.com>', 'bob@example.com', 'example.com'])
   .then(data => console.log('parse: without dns/esp checks', data))
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
 
 mg.parse.get('Alice <alice@example.com>, bob@example.com, example.com', true)
   .then(data => console.log('parse: with dns/esp checks', data))
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
