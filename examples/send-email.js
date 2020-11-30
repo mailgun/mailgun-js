@@ -1,15 +1,15 @@
 // require('babel/register'); // uncomment this for node versions < 4
 
-var fs = require('fs');
-var mailgun = require('../index');
-var mg = mailgun.client({username: 'api', key:  process.env.MAILGUN_API_KEY || ''});
+const fs = require('fs');
+const mailgun = require('../index');
+const mg = mailgun.client({username: 'api', key:  process.env.MAILGUN_API_KEY || ''});
 
-var domain = 'sandbox-123.mailgun.com';
-var fromEmail = 'Excited User <mailgun@sandbox-123.mailgun.com>';
-var toEmails = ['you@example.com']
+const domain = 'sandbox-123.mailgun.com';
+const fromEmail = 'Excited User <mailgun@sandbox-123.mailgun.com>';
+const toEmails = ['you@example.com']
 
-var mailgunLogo = fs.createReadStream(__dirname + '/mailgun.png');
-var rackspaceLogo = fs.createReadStream(__dirname + '/rackspace.png');
+const mailgunLogo = fs.createReadStream(__dirname + '/mailgun.png');
+const rackspaceLogo = fs.createReadStream(__dirname + '/rackspace.png');
 
 mg.messages.create(domain, {
     from: fromEmail,
