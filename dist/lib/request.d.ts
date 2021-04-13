@@ -3,6 +3,7 @@ declare class Request {
     private username;
     private key;
     private url;
+    private timeout;
     private headers;
     private formData;
     constructor(options: RequestOptions, formData: new () => FormData);

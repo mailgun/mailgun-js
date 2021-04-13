@@ -3,4 +3,5 @@ export default interface Options {
     key: string;
     url?: string;
     public_key?: string;
+    timeout?: number;
 }
