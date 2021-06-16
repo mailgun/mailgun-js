@@ -57,6 +57,18 @@ class Request {
     this.formData = formData;
   }
 
+  private objectToURLSearchParams(data: any): URLSearchParams {
+    const urlencodedData = new URLSearchParams();
+
+    if (!data) return null;
+
+    Object.entries(data).forEach(([key, value]: any) =>
+      urlencodedData.append(key, value)
+    );
+
+    return urlencodedData
+  }
+
   async request(method: string, url: string, inputOptions?: any): Promise<APIResponse> {
     const options = { ...inputOptions };
     const basic = Btoa(`${this.username}:${this.key}`);
@@ -134,7 +146,7 @@ class Request {
   }
 
   post(url: string, data: any, options?: any) : Promise<APIResponse> {
-    return this.command('post', url, data, options);
+    return this.command('post', url, this.objectToURLSearchParams(data), options);
   }
 
   postMulti(url: string, data: any): Promise<APIResponse> {
@@ -189,15 +201,15 @@ class Request {
   }
 
   put(url: string, data: any, options?: any): Promise<APIResponse> {
-    return this.command('put', url, data, options);
+    return this.command('put', url, this.objectToURLSearchParams(data), options);
   }
 
   patch(url: string, data: any, options?: any): Promise<APIResponse> {
-    return this.command('patch', url, data, options);
+    return this.command('patch', url, this.objectToURLSearchParams(data), options);
   }
 
   delete(url: string, data?: any, options?: any): Promise<APIResponse> {
-    return this.command('delete', url, data, options);
+    return this.command('delete', url, this.objectToURLSearchParams(data), options);
   }
 }
 

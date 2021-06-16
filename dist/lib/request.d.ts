@@ -11,6 +11,7 @@ declare class Request {
     private headers;
     private formData;
     constructor(options: RequestOptions, formData: new () => FormData);
+    private objectToURLSearchParams;
     request(method: string, url: string, inputOptions?: any): Promise<APIResponse>;
     query(method: string, url: string, query: any, options?: any): Promise<APIResponse>;
     command(method: string, url: string, data: any, options?: any): Promise<APIResponse>;
